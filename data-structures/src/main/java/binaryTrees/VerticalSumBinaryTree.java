@@ -9,27 +9,27 @@ public class VerticalSumBinaryTree {
     Node root;
     LinkedHashMap<Integer, Integer> hmap;
 
-    public VerticalSumBinaryTree() {
-        this.root = null;
-        this.hmap = new LinkedHashMap<>();
+    private VerticalSumBinaryTree() {
+        root = null;
+        hmap = new LinkedHashMap<>();
     }
 
-    public void findVerticalSum(final Node node, final int key) {
+    private void findVerticalSum(final Node node, final int key) {
         if (node == null) {
             return;
         }
-        this.findVerticalSum(node.left, key - 1);
-        if (this.hmap.containsKey(key)) {
-            this.hmap.put(key, this.hmap.get(key) + node.data);
+        if (hmap.containsKey(key)) {
+            hmap.put(key, hmap.get(key) + node.data);
         }
         else {
-            this.hmap.put(key, node.data);
+            hmap.put(key, node.data);
         }
-        this.findVerticalSum(node.right, key + 1);
+        findVerticalSum(node.left, key - 1);
+        findVerticalSum(node.right, key + 1);
     }
 
-    public void display() {
-        for (final Map.Entry<Integer, Integer> entry : this.hmap.entrySet()) {
+    private void display() {
+        for (final Map.Entry<Integer, Integer> entry : hmap.entrySet()) {
             System.out.println("Sum of Vertical Line " + entry.getKey() + " : " + entry.getValue());
         }
     }
@@ -41,8 +41,8 @@ public class VerticalSumBinaryTree {
         tree.root.right = new Node(3);
         tree.root.left.left = new Node(4);
         tree.root.left.right = new Node(5);
-        tree.root.right.left = new Node(7);
-        tree.root.right.right = new Node(6);
+        tree.root.right.left = new Node(6);
+        tree.root.right.right = new Node(7);
         tree.findVerticalSum(tree.root, 0);
         tree.display();
     }
