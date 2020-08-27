@@ -11,7 +11,7 @@ public class VerticalSumBinaryTree {
 
     public VerticalSumBinaryTree() {
         this.root = null;
-        this.hmap = new LinkedHashMap<Integer, Integer>();
+        this.hmap = new LinkedHashMap<>();
     }
 
     public void findVerticalSum(final Node node, final int key) {
