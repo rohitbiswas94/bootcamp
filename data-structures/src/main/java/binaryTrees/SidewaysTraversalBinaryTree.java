@@ -16,7 +16,9 @@ public class SidewaysTraversalBinaryTree {
     final Queue<Pair<Integer, Node>> queue = new LinkedList<>();
     final Map<Integer, List<Node>> mapOfNodesByLevel = new HashMap<>();
 
-    //creates a map of all levels of the tree in level order traversal
+    /*
+        Creates a map of all levels of the tree in level order traversal
+    */
     private void populateNodesByLevel(final Node root) {
         if (root == null) {
             return;
@@ -44,6 +46,10 @@ public class SidewaysTraversalBinaryTree {
         }
     }
 
+    /*
+        Displays the nodes in a sideways manner.
+        1st the right most ones and then right to left and left to right alternatively for the remaining list of nodes.
+    */
     private void displayNodes() {
         final List<Integer> sidewaysNodes = new LinkedList<>();
         final List<List<Node>> updatedNodes = new LinkedList<>();
