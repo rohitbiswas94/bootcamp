@@ -13,9 +13,11 @@ public class QuickSort {
                 i++;
             }
         }
-        int temp = arr[i];
-        arr[i] = arr[high];
-        arr[high] = temp;
+        if (i < high) {
+            int temp = arr[i];
+            arr[i] = arr[high];
+            arr[high] = temp;
+        }
         return i;
     }
 
@@ -28,7 +30,7 @@ public class QuickSort {
     }
 
     public static void main(String args[]) {
-        int arr[] = {10, 16, 8, 12, 15, 6, 3, 9, 5};
+        int arr[] = {8, 6, 9, 5, 10, 7, 11};
         quickSort(0, arr.length - 1, arr);
         for (int itr : arr)
             System.out.println(itr);
