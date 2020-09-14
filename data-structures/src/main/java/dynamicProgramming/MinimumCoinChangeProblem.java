@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 public class MinimumCoinChangeProblem {
 
+    //Top Down Approach
     private static int minCoins(int n, int arr[], int dp[]) {
         if(n == 0) return 0;
         int minCoins = Integer.MAX_VALUE;
@@ -25,6 +26,25 @@ public class MinimumCoinChangeProblem {
         }
         dp[n] = minCoins;
         return minCoins;
+    }
+
+    //Bottom Up Approach
+    private static int minCoins(int n, int arr[]) {
+        int dp[] = new int[n+1];
+        dp[0] = 0;
+        for (int amount = 1; amount <= n; amount++) {
+            dp[amount] = Integer.MAX_VALUE;
+            for (int denomination = 0; denomination < arr.length; denomination++) {
+                if (arr[denomination] <= amount) {
+                    int subMinCoins = dp[amount - arr[denomination]];
+                    if(subMinCoins + 1 < Integer.MAX_VALUE
+                    && subMinCoins + 1 < dp[amount]) {
+                        dp[amount] = subMinCoins + 1;
+                    }
+                }
+            }
+        }
+        return dp[n];
     }
 
     public static void main(String args[]) {
