@@ -1,3 +1,6 @@
+/*
+    Program to find the longest path in a matrix given that the difference between the cells is 1
+ */
 package dynamicProgramming;
 
 import java.util.Arrays;
