@@ -1,4 +1,4 @@
-//Find First and Last Position of Element in Sorted Array
+//Find First and Last Position of Element in Sorted Array in O(Logn)
 package arrays;
 
 public class FirstAndLastPositionOfElement {
