@@ -46,12 +46,12 @@ public class VerticalOrderTraversalBinaryTree {
                 list.add(root.data);
                 rowMap.put(row, list);
             } else {
-                rowMap.put(row, new ArrayList<>(Arrays.asList(root.data)));
+                rowMap.put(row, new ArrayList<>(Collections.singletonList(root.data)));
             }
             map.put(col, rowMap);
         } else {
             Map<Integer, List<Integer>> rowMap = new TreeMap<>();
-            rowMap.put(row, new ArrayList<>(Arrays.asList(root.data)));
+            rowMap.put(row, new ArrayList<>(Collections.singletonList(root.data)));
             map.put(col, rowMap);
         }
         traverse(root.left, map, col - 1, row + 1);
