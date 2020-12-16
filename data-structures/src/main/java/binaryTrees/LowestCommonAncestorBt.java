@@ -9,19 +9,22 @@ public class LowestCommonAncestorBt {
     static boolean value2;
 
     private Node lowestCommonAncestorUtil(final Node node, final int nodeData1, final int nodeData2) {
+        boolean found = false;
         if (node == null) {
             return null;
         }
         if (node.data == nodeData1) {
             value1 = true;
-            return node;
+            found = true;
         }
         if (node.data == nodeData2) {
             value2 = true;
-            return node;
+            found = true;
         }
         final Node left = lowestCommonAncestorUtil(node.left, nodeData1, nodeData2);
         final Node right = lowestCommonAncestorUtil(node.right, nodeData1, nodeData2);
+        if (found)
+            return node;
         if (left != null & right != null) {
             return node;
         }
@@ -53,6 +56,6 @@ public class LowestCommonAncestorBt {
         lca.lowestCommonAncestor(3, 4);
         lca.lowestCommonAncestor(2, 3);
         lca.lowestCommonAncestor(2, 8);
-
+        lca.lowestCommonAncestor(2, 4);
     }
 }
