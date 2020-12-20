@@ -26,7 +26,7 @@ public class LRUCacheDoublyLinkedListImpl {
 
     LRUCacheDoublyLinkedListImpl(int capacity) {
         cache_size = capacity;
-        head = new Node(0,0);
+        head = new Node(0, 0);
         tail = new Node(0, 0);
         head.next = tail;
         tail.prev = head;

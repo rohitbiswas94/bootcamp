@@ -21,7 +21,6 @@ public class RearrangeArrayAlternately {
                 nums[c] = arr[i];
             for (i = 0; i < n && flag; i++) {
                 arr[i] = nums[i];
-
             }
         }
         for (int x : arr)

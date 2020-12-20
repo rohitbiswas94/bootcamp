@@ -39,7 +39,7 @@ public class WaterOverflow {
             int water = in.nextInt();
             int row = in.nextInt();
             int col = in.nextInt();
-            double waterRemaining = calculateRemainingWater(row, col, Double.valueOf(water));
+            double waterRemaining = calculateRemainingWater(row, col, (double) water);
             System.out.println("Amount of water in row: " + row + " and column: " + col + " is = " + waterRemaining);
         }
 
