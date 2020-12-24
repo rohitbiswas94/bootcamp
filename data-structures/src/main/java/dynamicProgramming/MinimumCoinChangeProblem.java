@@ -9,13 +9,13 @@ public class MinimumCoinChangeProblem {
 
     //Top Down Approach
     private static int minCoins(int n, int arr[], int dp[]) {
-        if(n == 0) return 0;
+        if (n == 0) return 0;
         int minCoins = Integer.MAX_VALUE;
         for (int index = 0; index < arr.length; index++) {
             if (n - arr[index] >= 0) {
                 int subMinCoins;
                 if (dp[n - arr[index]] == -1) {
-                     subMinCoins = minCoins(n - arr[index], arr, dp);
+                    subMinCoins = minCoins(n - arr[index], arr, dp);
                 } else {
                     subMinCoins = dp[n - arr[index]];
                 }
@@ -29,31 +29,31 @@ public class MinimumCoinChangeProblem {
     }
 
     //Bottom Up Approach
-    private static int minCoins(int n, int arr[]) {
-        int dp[] = new int[n+1];
-        dp[0] = 0;
-        for (int amount = 1; amount <= n; amount++) {
-            dp[amount] = Integer.MAX_VALUE;
-            for (int denomination = 0; denomination < arr.length; denomination++) {
-                if (arr[denomination] <= amount) {
-                    int subMinCoins = dp[amount - arr[denomination]];
-                    if(subMinCoins + 1 < Integer.MAX_VALUE
-                    && subMinCoins + 1 < dp[amount]) {
-                        dp[amount] = subMinCoins + 1;
-                    }
-                }
+    private static int minCoins(int amount, int[] coins) {
+        int n = coins.length;
+        int[][] dp = new int[n + 1][amount + 1];
+        for (int i = 0; i <= n; ++i) {
+            for (int j = 0; j <= amount; ++j) {
+                if (j == 0)
+                    dp[i][j] = 0;
+                else if (i == 0)
+                    dp[i][j] = 100000;
+                else if (coins[i - 1] > j)
+                    dp[i][j] = dp[i - 1][j];
+                else
+                    dp[i][j] = Math.min(1 + dp[i][j - coins[i - 1]], dp[i - 1][j]);
             }
         }
-        return dp[n];
+        return dp[n][amount] > 1e4 ? -1 : dp[n][amount];
     }
 
     public static void main(String args[]) {
-        int arr[] = {7,5,1};
-        int n = 18;
-        int dp[] = new int[n + 1];
+        int[] coins = {2};
+        int totalAmount = 3;
+        int dp[] = new int[totalAmount + 1];
         Arrays.fill(dp, -1);
         dp[0] = 0;
-        int minCoins = minCoins(n, arr, dp);
-        System.out.println("The minimum number of coins to get " + n + " is : " + minCoins);
+        int minCoins = minCoins(totalAmount, coins);
+        System.out.println(minCoins);
     }
 }
