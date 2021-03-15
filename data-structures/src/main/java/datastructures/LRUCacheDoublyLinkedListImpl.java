@@ -5,10 +5,10 @@ import java.util.Map;
 
 public class LRUCacheDoublyLinkedListImpl {
 
-    Map<Integer, Node> hmap = new HashMap<>();
-    Node head;
-    Node tail;
-    int cache_size;
+    private Map<Integer, Node> hmap = new HashMap<>();
+    private Node head;
+    private Node tail;
+    private int cache_size;
 
     class Node {
         int value;
@@ -24,7 +24,7 @@ public class LRUCacheDoublyLinkedListImpl {
         }
     }
 
-    LRUCacheDoublyLinkedListImpl(int capacity) {
+    private LRUCacheDoublyLinkedListImpl(int capacity) {
         cache_size = capacity;
         head = new Node(0, 0);
         tail = new Node(0, 0);
