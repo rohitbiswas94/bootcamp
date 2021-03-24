@@ -69,7 +69,12 @@ public class ProducerConsumerProblem {
 
     public static void main(String[] args) {
         ProducerConsumerProblem pcp = new ProducerConsumerProblem();
-        Thread producer = new Thread(pcp::produce);
+        Thread producer = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                pcp.produce();
+            }
+        });
         Thread consumer = new Thread(pcp::consume);
         producer.start();
         consumer.start();
